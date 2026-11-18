@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🕵️ AI Image Detector</h1>
+            <p>Upload an image to detect if it's real or AI-generated</p>
+        </header>
+
+        <div class="upload-area" id="dropZone">
+            <div class="upload-content">
+                <div class="upload-icon">📤</div>
+                <h3>Drop your image here</h3>
+                <p>or click to browse</p>
+                <input type="file" id="fileInput" accept="image/*" style="display:none">
+                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                    Choose Image
+                </button>
+            </div>
+        </div>
+
+        <div id="previewContainer" style="display:none;">
+            <div class="preview-wrapper">
+                <img id="previewImage" alt="Preview">
+                <div class="loader" id="loader"></div>
+            </div>
+        </div>
+
+        <div id="resultsContainer" style="display:none;">
+            <div class="results-card">
+                <div class="verdict" id="verdict"></div>
+                
+                <div class="score-section">
+                    <h3>AI Likelihood Score</h3>
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill" style="width:0%"></div>
+                    </div>
+                    <span class="score-text" id="scoreText">0%</span>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label>Filename</label>
+                        <span id="filename">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>File Size</label>
+                        <span id="filesize">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Prediction</label>
+                        <span id="prediction">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Confidence</label>
+                        <span id="confidence">-</span>
+                    </div>
+                </div>
+
+                <div class="analysis-details">
+                    <button class="toggle-btn" onclick="toggleDetails()">▼ Show Detailed Analysis</button>
+                    <div class="detail-panel" id="detailPanel" style="display:none;">
+                        <pre id="rawResults"></pre>
+                    </div>
+                </div>
+
+                <button class="reset-btn" onclick="resetApp()">Analyze Another Image</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
